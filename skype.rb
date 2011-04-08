@@ -24,7 +24,8 @@ module Skype
     end
 
     def recentchats
-      format @interface.Invoke("SEARCH RECENTCHATS")
+      result = @interface.Invoke("SEARCH RECENTCHATS")
+      result.first.gsub(/^CHATS\s/, '').split(',').map(&:chomp).map(&:strip)
     end
 
   end
@@ -35,18 +36,7 @@ module Skype
 
     def initialize(options)
       super
-      puts "recent chats:"
-      recent.each_with_index do |chat, i|
-        puts "  #{i+1}: #{chat}"
-      end
-      puts "which chat to join? (#{recent.length.times.map{|i|i+1}.join('/')})"
-      index = gets.chomp
-      @chat_id = recent[index.to_i-1]
-    end
-
-
-    def format(list)
-      list.first.gsub(/^CHATS\s/, '').split(',').map(&:chomp).map(&:strip)
+      @chat_id = options[:chat_id] || raise('no chat_id given')
     end
 
     def message(text)
