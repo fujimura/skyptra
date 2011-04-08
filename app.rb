@@ -27,9 +27,9 @@ post '/:display/:chat_sha/github' do
   chat.message header + commits.join('\n')
 end
 
-get '/ping/:display/:chat_sha/:msg' do
+get '/ping/:display/:chat_sha' do
   api = Skype::API.new(:display => ":" + params[:display])
   chat_id = api.recentchats.detect{|s| s.include? params[:chat_sha]}
   chat = Skype::Chat.new(:display => ":" + params[:display], :chat_id => chat_id)
-  chat.message params[:msg]
+  chat.message 'pong'
 end
