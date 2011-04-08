@@ -24,7 +24,7 @@ post '/:display/:chat_sha/github' do
    COMMIT
   end
 
-  chat.message header + commits.join('\n')
+  chat.message header + '\n' + commits.join('\n')
 end
 
 get '/ping/:display/:chat_sha' do
