@@ -2,17 +2,22 @@
 %html
   %head
     %title skyptra
-    %script{:src => 'https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js'}
+    %link{:type => 'text/css', :rel => 'stylesheet', :href => 'style.css'}
+    %script{:type => 'text/javascript', :src => "https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"}
   %body
     %h1 chat list
     - @recent_chats.each do |chat|
-      %div
+      .chat
         %h2= chat.topic.empty? ? '(no topic name given)' : chat.topic
-        %ul
-          - chat.members.each do |member|
-            %li= member
-        %h3 recent chat messages
-        - chat.recentchatmessages.reverse[0..5].reverse.each do |message|
-          %p #{message.body} #{message.from_handle}
-        %p <a href="/chat/#{chat.hex}/ping">send ping to #{chat.id} #{chat.topic}</a>
-        %p github hook url: http://#{request.host}/chat/#{chat.hex}/github
+        .chat_body
+          %h3 members
+          %ul
+            - chat.members.each do |member|
+              %li= member
+          %h3 recent chat messages
+          - chat.recentchatmessages.reverse[0..5].reverse.each do |message|
+            %p #{message.body} #{message.from_handle}
+          %h3 ping
+          %p <a href="/chat/#{chat.hex}/ping">send ping to #{chat.id} #{chat.topic}</a>
+          %h3 github hook url
+          %p http://#{request.host}/chat/#{chat.hex}/github

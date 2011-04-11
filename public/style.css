@@ -1,0 +1,24 @@
+div.chat {
+  margin:10px;
+  background-color:rgb(244,244,244);
+  border: solid 1px black;
+}
+
+div.chat_body {
+  padding: 10px 10px 10px 20px;
+}
+
+h2 {
+  background-color:rgb(234,234,234);
+  border-bottom: solid 1px black;
+  margin:0;
+  padding:5px;
+}
+
+h3 {
+  border-bottom: solid 1px gray;
+}
+
+p {
+  padding-left: 1em;
+}
