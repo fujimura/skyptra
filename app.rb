@@ -19,7 +19,7 @@ post '/chat/:chat_hex/github' do
   commits = payload['commits'].map do |commit|
     <<-COMMIT.split("\n").map {|s| "    #{s}"}.join("\n")
 #{commit['url']}
-Author: #{commit['author']['name']} / Date: #{commit['timestamp']} / commit: #{commit['id']}
+Author: #{commit['author']['name']} / Date: #{Time.parse(commit['timestamp']).getlocal} / commit: #{commit['id']}
 
 #{commit['message']}
 COMMIT
