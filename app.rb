@@ -1,9 +1,4 @@
-require 'rubygems'
-require 'sinatra'
 require 'skype'
-require 'haml'
-require 'json'
-require 'ruby-debug'
 
 # list current chat ids.
 get '/' do

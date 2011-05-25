@@ -1,6 +1,3 @@
-require 'rubygems'
-require 'dbus'
-
 module Skype
   class API
     attr_accessor :interface
