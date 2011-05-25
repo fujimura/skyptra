@@ -1,0 +1,8 @@
+[GitHub commit bot] <%= @payload['repository']['name'] %>に以下のコミットがpushされました。
+<% @payload['commits'].each do |commit| %>
+  <%= commit['url'] %>
+  Author: <%= commit['author']['name'] %> / Date: <%= Time.parse(commit['timestamp']).getlocal %> / commit: <%= commit['id'] %>
+  <%= commit['message'] %>
+
+<% end %>
+

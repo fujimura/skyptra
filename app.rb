@@ -9,18 +9,9 @@ end
 # receive commit hook from github
 # :chat_hex => hex in chat id
 post '/chat/:chat_hex/github' do
-  payload = JSON.parse(params['payload'])
-  header = "[GitHub commit bot] #{payload['repository']['name']} に以下のコミットがpushされました。"
-  commits = payload['commits'].map do |commit|
-    <<-COMMIT.split("\n").map {|s| "    #{s}"}.join("\n")
-#{commit['url']}
-Author: #{commit['author']['name']} / Date: #{Time.parse(commit['timestamp']).getlocal} / commit: #{commit['id']}
-
-#{commit['message']}
-COMMIT
-  end
-
-  @chat.post_message header + "\n" + commits.join("\n")
+  @payload = JSON.parse(params['payload'])
+  text = erb :github_commit
+  @chat.post_message text
 end
 
 # ping
