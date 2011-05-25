@@ -1,4 +1,4 @@
-require 'skype'
+require 'lib/skype'
 
 # list current chat ids.
 get '/' do
