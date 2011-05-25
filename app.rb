@@ -21,6 +21,11 @@ get '/chat/:chat_hex/ping' do
   redirect '/'
 end
 
+# :chat_hex => hex in chat id
+post '/chat/:chat_hex/message' do
+  @chat.post_message params['message']
+end
+
 before do
   unless ENV['DISPLAY']
     raise 'no display found. set environmental variable DISPLAY to use Skype GUI'
