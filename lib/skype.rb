@@ -108,7 +108,7 @@ module Skype
     end
 
     def post_message(text)
-      @@interface.Invoke("CHATMESSAGE #{@id} #{text}")
+      @@interface.Invoke("CHATMESSAGE #{@id} /me #{text}")
     end
 
   end
