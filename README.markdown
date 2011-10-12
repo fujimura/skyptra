@@ -2,9 +2,16 @@
 
 sinatra based skype bot.
 
+## How to run
+
+    $ DISPLAY=:0.0 rackup
+
+note: $DISPLAY may vary on your situation.
+
 ## TODO
 
 * test
+* run with 1.9.2
 * refactoring
 * display detection
 
