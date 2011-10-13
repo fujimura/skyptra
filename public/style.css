@@ -1,24 +1,20 @@
-div.chat {
-  margin:10px;
-  background-color:rgb(244,244,244);
-  border: solid 1px black;
+ul.chat_members  {
+float:left;
+}
+ul.chat_members li {
+  float:left;
+  list-style: inside none;
 }
 
-div.chat_body {
-  padding: 10px 10px 10px 20px;
+.chat {
+  padding:10px;
+  margin-bottom:10px;
+  background-color:#f4f4f4;
 }
 
-h2 {
-  background-color:rgb(234,234,234);
-  border-bottom: solid 1px black;
-  margin:0;
-  padding:5px;
+.chat h2 {
+  border-bottom:double 3px gray;
 }
-
-h3 {
-  border-bottom: solid 1px gray;
-}
-
-p {
-  padding-left: 1em;
+.chat h3 {
+  border-bottom:solid 1px gray;
 }

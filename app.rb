@@ -22,7 +22,7 @@ get '/chat/:chat_hex/ping' do
 end
 
 # :chat_hex => hex in chat id
-post '/chat/:chat_hex/message' do
+post '/chat/:chat_hex/messages' do
   @chat.post_message params['message']
 end
 

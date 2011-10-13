@@ -2,22 +2,36 @@
 %html
   %head
     %title skyptra
+    %link{:type => 'text/css', :rel => 'stylesheet', :href => 'bootstrap.css'}
     %link{:type => 'text/css', :rel => 'stylesheet', :href => 'style.css'}
     %script{:type => 'text/javascript', :src => "https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"}
   %body
-    %h1 chat list
-    - @recent_chats.each do |chat|
-      .chat
-        %h2= chat.topic.empty? ? '(no topic name given)' : chat.topic
-        .chat_body
-          %h3 members
-          %ul
-            - chat.members.each do |member|
-              %li= member
-          %h3 recent chat messages
-          - chat.recentchatmessages.reverse[0..5].reverse.each do |message|
-            %p #{message.body} #{message.from_handle}
-          %h3 ping
-          %p <a href="/chat/#{chat.hex}/ping">send ping to #{chat.id} #{chat.topic}</a>
-          %h3 github hook url
-          %p http://#{request.host}/chat/#{chat.hex}/github
+    .container
+      %h1 chat list
+      %ul
+        - @recent_chats.each do |chat|
+          %li
+            %a{:href => '#' + chat.hex}= chat.topic.empty? ? '(no topic name given)' : chat.topic
+      - @recent_chats.each do |chat|
+        .chat
+          %h2{:id => chat.hex}= chat.topic.empty? ? '(no topic name given)' : chat.topic
+          .chat_body
+            %h3 id
+            %p= chat.id
+            %h3 hex
+            %p= chat.hex
+            %h3 members
+            %ul.chat_members.unstyled
+              - chat.members.each do |member|
+                %li= member
+            %h3 recent chat messages
+            - chat.recentchatmessages.reverse[0..5].reverse.each do |message|
+              %p #{message.body} #{message.from_handle}
+            %h3 API
+            %dl
+              %dt Ping
+              %dd GET <a href="/chat/#{chat.hex}/ping">http://#{request.host}/chat/#{chat.hex}/ping</a>
+              %dt Post message
+              %dd POST http://#{request.host}/chat/#{chat.hex}/messages
+              %dt GitHub hook
+              %dd POST http://#{request.host}/chat/#{chat.hex}/github
