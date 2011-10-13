@@ -32,6 +32,6 @@
               %dt Ping
               %dd GET <a href="/chat/#{chat.hex}/ping">http://#{request.host}/chat/#{chat.hex}/ping</a>
               %dt Post message
-              %dd POST http://#{request.host}/chat/#{chat.hex}/messages
+              %dd POST http://#{request.host}/chat/#{chat.hex}/messages?message=\#{message to post}
               %dt GitHub hook
               %dd POST http://#{request.host}/chat/#{chat.hex}/github
