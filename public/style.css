@@ -4,6 +4,7 @@ float:left;
 ul.chat_members li {
   float:left;
   list-style: inside none;
+  margin:0 5px 0 0;
 }
 
 .chat {
