@@ -50,7 +50,7 @@ module Skype
       query = "#{object_name} #{@id} #{object}"
       result = @@interface.Invoke("GET " + query).to_s.gsub(query, '').strip
 
-      # return array for plulal property
+      # return array for plural property
       if object[-1, 1] == 'S'
         split_with_object_type(object, result).map do |r|
           if @@class_mapping[object]
